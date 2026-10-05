@@ -1,31 +1,50 @@
 # Daymark — Habit Tracker
 
-A responsive habit tracker built with **HTML, CSS, and vanilla JavaScript**. Each habit can have 1–5 daily checkpoints. The app shows daily progress, a seven-day chart, and streaks.
+**Build better days, one checkpoint at a time.**
+
+Daymark is a responsive habit tracker for turning daily goals into clear, achievable steps. It gives each habit its own checkpoints and keeps progress visible through a daily dashboard, streaks, and a seven-day activity chart.
 
 ## Features
 
-- Create, edit, and delete habits with custom icons, colors, and checkpoints.
-- Check off steps for today or a past day by using the date strip.
-- See today's completion percentage, checkpoint count, and best active streak.
-- Keep your data in the same browser with `localStorage`.
-- Use the layout on phones, tablets, and desktops.
-- Three editable example habits appear the first time you open the app.
+- Create, edit, and delete habits with custom icons, colors, and up to five checkpoints.
+- Mark checkpoints complete for today or revisit a previous day.
+- Track daily completion, completed steps, and active streaks.
+- Review the last seven days in a simple progress chart.
+- Keep progress across refreshes with browser `localStorage`.
+- Use the same interface on desktop and mobile screens.
+
+## Built with
+
+- HTML5 for the page structure and accessible form controls
+- CSS3 for layout, styling, and responsive breakpoints
+- Vanilla JavaScript for habit logic, rendering, and browser storage
+
+No framework, package installation, or build process is required.
 
 ## Run locally
 
-Open `index.html` in a browser. No install, account, package manager, or build command is required. Internet access is only used for the optional Google Fonts; system fonts are the fallback.
+Download or clone the repository, then open `index.html` in a modern browser. Three example habits are provided on the first visit so the dashboard can be explored immediately; they can be edited or deleted.
 
-## Project files
+## Project structure
 
-| File | Purpose |
-| --- | --- |
-| `index.html` | Page structure, buttons, stats, form dialog, and script/style links. |
-| `style.css` | Colors, spacing, typography, responsive layout, and interaction states. |
-| `script.js` | Habit data, checkpoint actions, date logic, rendering, and browser storage. |
-| `.nojekyll` | Tells GitHub Pages to serve the static files directly. |
+```text
+habit-tracker/
+├── index.html    # Page structure and habit form
+├── style.css     # Visual design and responsive layout
+├── script.js     # Habit state, date logic, and interactions
+└── .nojekyll     # Static publishing on GitHub Pages
+```
 
-## How the data works
+## How it works
 
-Each habit is an object with an `id`, `name`, `icon`, `color`, an array of checkpoints, and a `history` object. Each history key is a date such as `2026-10-05`; its value is an array of completed checkpoint IDs. Changing a checkpoint label keeps its ID, so completed history stays connected to that step.
+Each habit has a unique ID, a set of checkpoint IDs, and a history of completed checkpoints by date. When a checkpoint is toggled, Daymark updates the habit data, saves it to `localStorage`, and redraws the dashboard. Editing a checkpoint label keeps its ID, preserving its completion history.
 
-The app saves the whole habits array under the key `daymark-habits-v1` in `localStorage`. That means data stays on that device and browser. A different browser or a cleared browser storage starts fresh. There is no online account or sync.
+Data is stored in the current browser on the current device. Daymark does not use accounts or cloud sync, so clearing site data will reset progress.
+
+## Deployment
+
+Daymark is a static site. To publish it with GitHub Pages, open the repository's **Settings → Pages**, choose **Deploy from a branch**, and select the `main` branch with `/(root)` as the folder. The repository root must contain `index.html`.
+
+## License
+
+No open-source license is granted. The source is available for viewing; all rights are reserved by the repository owner.
