@@ -1,6 +1,6 @@
 # Daymark — Habit Tracker
 
-A responsive habit tracker built with **HTML, CSS, and vanilla JavaScript** for the NSUT society recruitment task. Each habit can have 1–5 daily checkpoints. The app shows daily progress, a seven-day chart, and streaks.
+A responsive habit tracker built with **HTML, CSS, and vanilla JavaScript**. Each habit can have 1–5 daily checkpoints. The app shows daily progress, a seven-day chart, and streaks.
 
 ## Features
 
