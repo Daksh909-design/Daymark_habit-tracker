@@ -1,4 +1,4 @@
-# Daymark — Habit Tracker
+# Daymark
 
 **Build better days, one checkpoint at a time.**
 
@@ -28,11 +28,10 @@ Download or clone the repository, then open `index.html` in a modern browser. Th
 ## Project structure
 
 ```text
-habit-tracker/
+Daymark_habit-tracker/
 ├── index.html    # Page structure and habit form
 ├── style.css     # Visual design and responsive layout
-├── script.js     # Habit state, date logic, and interactions
-└── .nojekyll     # Static publishing on GitHub Pages
+└── script.js     # Habit state, date logic, and interactions
 ```
 
 ## How it works
