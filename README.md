@@ -22,7 +22,6 @@ Open `index.html` in a browser. No install, account, package manager, or build c
 | `index.html` | Page structure, buttons, stats, form dialog, and script/style links. |
 | `style.css` | Colors, spacing, typography, responsive layout, and interaction states. |
 | `script.js` | Habit data, checkpoint actions, date logic, rendering, and browser storage. |
-| `LEARN.md` | Beginner walkthrough and study path. |
 | `.nojekyll` | Tells GitHub Pages to serve the static files directly. |
 
 ## How the data works
