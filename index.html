@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta id="theme-color" name="theme-color" content="#f7f5f0">
+  <meta name="description" content="A simple daily habit tracker with checkpoints, streaks and weekly progress.">
+  <title>Daymark — Habit Tracker</title>
+  <script>
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem('daymark-theme-v1') || 'sunrise';
+    } catch {
+      document.documentElement.dataset.theme = 'sunrise';
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="themes.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="App sidebar">
+      <a class="brand" href="#top" aria-label="Daymark home"><span class="brand-mark">✳</span><span>daymark<span class="brand-dot">.</span></span></a>
+      <div class="sidebar-middle">
+        <p class="eyebrow">YOUR SPACE</p>
+        <a class="nav-link active" href="#today"><span aria-hidden="true">◫</span> Today</a>
+        <a class="nav-link" href="#habits"><span aria-hidden="true">▦</span> My habits</a>
+        <a class="nav-link" href="#insights"><span aria-hidden="true">◔</span> Insights</a>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="sidebar-note"><span>✦</span><p>Small steps count.<br><strong>Keep showing up.</strong></p></div>
+        <span class="made-by">Made for the everyday wins.</span>
+      </div>
+    </aside>
+
+    <main id="top" class="main-content">
+      <header class="topbar">
+        <div class="topbar-label"><span class="live-dot"></span> YOUR PERSONAL DASHBOARD</div>
+        <div class="topbar-right">
+          <label class="theme-picker" for="theme-select">
+            <span aria-hidden="true">◐</span>
+            <span class="theme-picker-label">Theme</span>
+            <select id="theme-select" aria-label="Color theme">
+              <option value="sunrise">Sunrise</option>
+              <option value="midnight">Midnight</option>
+              <option value="lavender">Lavender</option>
+              <option value="forest">Forest</option>
+            </select>
+          </label>
+          <span id="header-date"></span><span class="avatar" aria-hidden="true">✳</span>
+        </div>
+      </header>
+
+      <section id="today" class="welcome-section" aria-labelledby="welcome-title">
+        <div class="welcome-copy">
+          <p class="eyebrow orange">YOUR DAY, YOUR PACE</p>
+          <h1 id="welcome-title">Make today <em>count.</em></h1>
+          <p>Good habits grow one checkpoint at a time. Pick up where you left off.</p>
+          <button class="primary-button" id="add-habit-top" type="button"><span aria-hidden="true">＋</span> Add a habit</button>
+        </div>
+        <div class="welcome-art" aria-hidden="true">
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="art-sun">✳</div><span class="art-spark spark-one">✦</span><span class="art-spark spark-two">✦</span>
+          <div class="art-caption">progress over perfection ↗</div>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Your progress at a glance">
+        <div class="stat-card"><div class="stat-head"><span>Today’s progress</span><span class="stat-icon coral">↗</span></div><div class="stat-value"><strong id="today-percent">0%</strong><span>completed</span></div><div class="stat-meter"><span id="today-meter"></span></div></div>
+        <div class="stat-card"><div class="stat-head"><span>Checkpoints done</span><span class="stat-icon lavender">✓</span></div><div class="stat-value"><strong id="done-count">0/0</strong><span>today</span></div><p class="stat-foot">Each little win adds up.</p></div>
+        <div class="stat-card"><div class="stat-head"><span>Best active streak</span><span class="stat-icon yellow">✳</span></div><div class="stat-value"><strong id="best-streak">0</strong><span>days</span></div><p class="stat-foot">Keep your momentum going.</p></div>
+      </section>
+
+      <section id="habits" class="habits-section" aria-labelledby="habits-title">
+        <div class="section-heading"><div><p class="eyebrow">THE LITTLE THINGS</p><h2 id="habits-title">Today’s habits <span id="habit-total" class="count-pill">0</span></h2><p>Check off each step as you go.</p></div><button class="outline-button" id="add-habit-inline" type="button">＋ New habit</button></div>
+        <div class="date-strip"><button id="previous-week" class="date-arrow" type="button" aria-label="Previous week">‹</button><div id="date-list" class="date-list" aria-label="Choose a day"></div><button id="next-week" class="date-arrow" type="button" aria-label="Next week">›</button></div>
+        <div id="viewing-date" class="viewing-date"></div>
+        <div id="habit-list" class="habit-list"></div>
+      </section>
+
+      <section id="insights" class="insights-section" aria-labelledby="insights-title">
+        <div class="section-heading"><div><p class="eyebrow">THE BIG PICTURE</p><h2 id="insights-title">Your last 7 days</h2><p>A little progress every day looks like this.</p></div></div>
+        <div class="insights-card"><div id="week-chart" class="week-chart" aria-label="Daily completion in the last seven days"></div><div class="insights-note"><span>✦</span><p>Consistency is built in small moments. You’re doing great just by showing up.</p></div></div>
+      </section>
+      <footer>Small steps. Real momentum. <span>daymark © 2026</span></footer>
+    </main>
+  </div>
+
+  <dialog id="habit-dialog" aria-labelledby="dialog-title">
+    <form id="habit-form" novalidate>
+      <div class="dialog-top"><div><p class="eyebrow orange">MAKE IT YOURS</p><h2 id="dialog-title">New habit</h2></div><button id="close-dialog" class="icon-button" type="button" aria-label="Close">×</button></div>
+      <p class="dialog-intro">Give your goal a name, then break it into a few easy checkpoints.</p>
+      <label class="field-label" for="habit-name">Habit name</label><input id="habit-name" name="name" maxlength="40" placeholder="e.g. Morning routine" required>
+      <div class="form-row"><div><label class="field-label" for="habit-icon">Icon</label><select id="habit-icon" name="icon"><option value="☀">☀ Sun</option><option value="📚">📚 Books</option><option value="💧">💧 Water</option><option value="🏃">🏃 Run</option><option value="🧘">🧘 Mindfulness</option><option value="✍">✍ Writing</option><option value="🎨">🎨 Creative</option><option value="✳">✳ Other</option></select></div><div><label class="field-label" for="habit-color">Color</label><select id="habit-color" name="color"><option value="peach">Peach</option><option value="purple">Purple</option><option value="mint">Mint</option><option value="blue">Blue</option><option value="yellow">Yellow</option></select></div></div>
+      <div class="checkpoint-label-row"><label class="field-label" for="checkpoint-1">Checkpoints <span>(1 to 5)</span></label><button id="add-checkpoint" class="text-button" type="button">＋ Add step</button></div>
+      <div id="checkpoint-inputs" class="checkpoint-inputs"></div>
+      <p id="form-error" class="form-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button id="cancel-dialog" class="outline-button" type="button">Cancel</button><button id="save-habit" class="primary-button" type="submit">Create habit</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
