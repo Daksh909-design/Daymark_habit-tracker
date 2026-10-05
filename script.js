@@ -40,16 +40,9 @@ function sampleHabits() {
     { name: 'Read a little', icon: '📚', color: 'purple', steps: ['Read 10 pages', 'Write down one idea'] },
     { name: 'Move my body', icon: '🏃', color: 'mint', steps: ['Stretch for 5 minutes', 'Go for a walk'] }
   ];
-  return examples.map((example, index) => {
+  return examples.map(example => {
     const checkpoints = example.steps.map(label => ({ id: uid(), label }));
-    const history = {};
-    // A few sample past days make the chart useful on first visit.
-    for (let daysAgo = 1; daysAgo <= 6; daysAgo++) {
-      if ((daysAgo + index) % 4 !== 0) {
-        history[dateKey(addDays(today, -daysAgo))] = checkpoints.map(step => step.id);
-      }
-    }
-    return { id: uid(), name: example.name, icon: example.icon, color: example.color, checkpoints, history };
+    return { id: uid(), name: example.name, icon: example.icon, color: example.color, checkpoints, history: {} };
   });
 }
 
@@ -274,7 +267,7 @@ function showToast(message) {
 form.addEventListener('submit', event => {
   event.preventDefault();
   const name = $('#habit-name').value.trim();
-  const inputs = [...$('#checkpoint-inputs input')];
+  const inputs = [...document.querySelectorAll('#checkpoint-inputs input')];
   const labels = inputs.map(input => input.value.trim());
   if (!name || labels.some(label => !label)) {
     $('#form-error').textContent = 'Add a habit name and fill in every checkpoint.';
