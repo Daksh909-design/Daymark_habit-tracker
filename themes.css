@@ -1,4 +1,3 @@
-/* Change the colors here to make a new theme. */
 :root {
   color-scheme: light;
   --bg: #f6f7f9;
@@ -44,7 +43,7 @@
 }
 
 :root[data-theme="lavender"] {
-  --bg: #f6f3fa;
+  --bg: #eee6f8;
   --surface: #ffffff;
   --text: #302b3f;
   --muted: #625d70;
@@ -52,7 +51,7 @@
   --accent: #6749a1;
   --accent-hover: #523781;
   --accent-text: #ffffff;
-  --soft: #eee8f7;
+  --soft: #e3d5f4;
   --track: #e7e1ee;
   --bar: #b5a5d0;
   --done-bg: #e7f1e9;
