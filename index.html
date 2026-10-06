@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta id="theme-color" name="theme-color" content="#f6f7f9">
+  <meta name="description" content="Daymark helps you track habits one checkpoint at a time.">
+  <title>Daymark | Habit Tracker</title>
+  <script>
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem('daymark-theme-v1') || 'sunrise';
+    } catch {
+      document.documentElement.dataset.theme = 'sunrise';
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="themes.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top">Daymark<span>.</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#today">Today</a>
+        <a href="#habits">Habits</a>
+        <a href="#insights">Progress</a>
+      </nav>
+      <label class="theme-control" for="theme-select">Theme
+        <select id="theme-select">
+          <option value="sunrise">Light</option>
+          <option value="midnight">Dark</option>
+          <option value="lavender">Lavender</option>
+          <option value="forest">Forest</option>
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro" id="today">
+      <div>
+        <p class="small-label" id="header-date"></p>
+        <h1>Habit tracker</h1>
+        <p>Add a habit and tick its checkpoints each day.</p>
+      </div>
+      <button class="primary-button" id="add-habit-top" type="button">+ Add habit</button>
+    </section>
+
+    <section class="stats-grid" aria-label="Today's summary">
+      <div class="stat-card">
+        <p>Today's progress</p>
+        <strong id="today-percent">0%</strong>
+        <div class="stat-meter"><span id="today-meter"></span></div>
+      </div>
+      <div class="stat-card">
+        <p>Checkpoints completed</p>
+        <strong id="done-count">0/0</strong>
+        <small>for today</small>
+      </div>
+      <div class="stat-card">
+        <p>Best active streak</p>
+        <strong id="best-streak">0</strong>
+        <small>days</small>
+      </div>
+    </section>
+
+    <section class="habits-section" id="habits" aria-labelledby="habits-title">
+      <div class="section-heading">
+        <h2 id="habits-title">Your habits <span id="habit-total" class="count-pill">0</span></h2>
+        <button class="outline-button" id="add-habit-inline" type="button">+ New habit</button>
+      </div>
+      <div class="date-strip">
+        <button class="date-arrow" id="previous-week" type="button" aria-label="Previous week">‹</button>
+        <div class="date-list" id="date-list" aria-label="Choose a day"></div>
+        <button class="date-arrow" id="next-week" type="button" aria-label="Next week">›</button>
+      </div>
+      <p class="viewing-date" id="viewing-date"></p>
+      <div class="habit-list" id="habit-list"></div>
+    </section>
+
+    <section class="insights-section" id="insights" aria-labelledby="insights-title">
+      <h2 id="insights-title">Last 7 days</h2>
+      <div class="insights-card">
+        <div class="week-chart" id="week-chart" aria-label="Daily completion in the last seven days"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">Daymark stores your habits in this browser.</footer>
+
+  <dialog id="habit-dialog" aria-labelledby="dialog-title">
+    <form id="habit-form" novalidate>
+      <div class="dialog-top">
+        <h2 id="dialog-title">New habit</h2>
+        <button class="icon-button" id="close-dialog" type="button" aria-label="Close">×</button>
+      </div>
+
+      <label class="field-label" for="habit-name">Habit name</label>
+      <input id="habit-name" name="name" maxlength="40" placeholder="For example, Read every day" required>
+
+      <div class="form-row">
+        <div>
+          <label class="field-label" for="habit-icon">Icon</label>
+          <select id="habit-icon" name="icon">
+            <option value="☀">☀ Sun</option>
+            <option value="📚">📚 Books</option>
+            <option value="💧">💧 Water</option>
+            <option value="🏃">🏃 Run</option>
+            <option value="🧘">🧘 Mindfulness</option>
+            <option value="✍">✍ Writing</option>
+            <option value="🎨">🎨 Art</option>
+            <option value="✳">✳ Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="field-label" for="habit-color">Color</label>
+          <select id="habit-color" name="color">
+            <option value="peach">Peach</option>
+            <option value="purple">Purple</option>
+            <option value="mint">Mint</option>
+            <option value="blue">Blue</option>
+            <option value="yellow">Yellow</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="checkpoint-label-row">
+        <span class="field-label" id="checkpoints-label">Checkpoints <small>(up to 5)</small></span>
+        <button class="text-button" id="add-checkpoint" type="button">+ Add step</button>
+      </div>
+      <div class="checkpoint-inputs" id="checkpoint-inputs" role="group" aria-labelledby="checkpoints-label"></div>
+      <p class="form-error" id="form-error" role="alert" hidden></p>
+
+      <div class="dialog-actions">
+        <button class="outline-button" id="cancel-dialog" type="button">Cancel</button>
+        <button class="primary-button" id="save-habit" type="submit">Create habit</button>
+      </div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

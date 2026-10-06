@@ -1,0 +1,76 @@
+/* Change the colors here to make a new theme. */
+:root {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --text: #202833;
+  --muted: #586575;
+  --line: #d8dee6;
+  --accent: #245a9b;
+  --accent-hover: #1b4679;
+  --accent-text: #ffffff;
+  --soft: #eaf1f9;
+  --track: #e5eaf0;
+  --bar: #a9bfd9;
+  --done-bg: #e6f3e8;
+  --done-text: #245c36;
+  --peach: #fbe6da;
+  --purple: #eee6fa;
+  --mint: #e2f3e8;
+  --blue: #e4effb;
+  --yellow: #fbf0cf;
+}
+
+:root[data-theme="midnight"] {
+  color-scheme: dark;
+  --bg: #161b24;
+  --surface: #222b37;
+  --text: #f0f3f7;
+  --muted: #b6c2d0;
+  --line: #3c4958;
+  --accent: #a9c8f2;
+  --accent-hover: #c3d9f7;
+  --accent-text: #14243a;
+  --soft: #2d4058;
+  --track: #3a4859;
+  --bar: #6683a8;
+  --done-bg: #254337;
+  --done-text: #c6efd2;
+  --peach: #564137;
+  --purple: #433b59;
+  --mint: #29483e;
+  --blue: #2d435b;
+  --yellow: #514a34;
+}
+
+:root[data-theme="lavender"] {
+  --bg: #f6f3fa;
+  --surface: #ffffff;
+  --text: #302b3f;
+  --muted: #625d70;
+  --line: #ded7e9;
+  --accent: #6749a1;
+  --accent-hover: #523781;
+  --accent-text: #ffffff;
+  --soft: #eee8f7;
+  --track: #e7e1ee;
+  --bar: #b5a5d0;
+  --done-bg: #e7f1e9;
+  --done-text: #305d3e;
+}
+
+:root[data-theme="forest"] {
+  --bg: #f2f6f0;
+  --surface: #ffffff;
+  --text: #26372b;
+  --muted: #566d5c;
+  --line: #d5e1d5;
+  --accent: #286d45;
+  --accent-hover: #1d5535;
+  --accent-text: #ffffff;
+  --soft: #e4f0e5;
+  --track: #dce9dd;
+  --bar: #91b99a;
+  --done-bg: #def0e1;
+  --done-text: #27603a;
+}
